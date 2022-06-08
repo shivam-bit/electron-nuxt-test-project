@@ -4,7 +4,7 @@
  * @link {https://nuxtjs.org/guide/configuration/}
  */
 
-module.exports = {
+export default {
   ssr: false,
   target: 'static',
   head: {
