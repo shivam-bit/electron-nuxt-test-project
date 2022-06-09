@@ -1,6 +1,5 @@
 {
-  "name": "raw-project",
-  "productName":"synth",
+  "name": "test-project",
   "version": "0.0.1",
   "description": "An electron-nuxt project",
   "main": "./dist/main/index.js",
@@ -8,7 +7,91 @@
     "dev": "node .electron-nuxt/dev.js",
     "build": "node .electron-nuxt/build.js",
     "preinstall": "node .electron-nuxt/check-engines.js",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "electron-builder -m",
+    "publish": "electron-builder -m --publish always"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivam-bit/electron-nuxt-test-project.git"
+  },
+  "license": "MIT",
+  "build": {
+    "productName": "TestProject",
+    "appId": "synth.co.in",
+    "asar": true,
+    "asarUnpack": "**\\*.{node,dll}",
+    "files": [
+      "package.json",
+      {
+        "from": "dist/main/",
+        "to": "dist/main/"
+      },
+      {
+        "from": "dist/renderer",
+        "to": "dist/renderer/"
+      }
+    ],
+    "afterSign": "./scripts/notarize.js",
+    "mac": {
+      "type": "distribution",
+      "category": "public.app-category.utilities",
+      "hardenedRuntime": true,
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.plist",
+      "gatekeeperAssess": false,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "directories": {
+      "app": ".",
+      "buildResources": "assets",
+      "output": "build"
+    },
+    "extraResources": [
+      "./assets/**",
+      {
+        "from": "./release/app",
+        "filter": "static/**"
+      }
+    ],
+    "publish": {
+      "provider": "github",
+      "releaseType": "release",
+      "owner": "shivam-bit",
+      "repo": "electron-nuxt-test-project"
+    }
   },
   "keywords": [],
   "author": "shivam-bit <shivama5tronot@gmail.com>",
