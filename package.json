@@ -95,7 +95,6 @@
   },
   "keywords": [],
   "author": "shivam-bit <shivama5tronot@gmail.com>",
-  "license": "MIT",
   "homepage": "https://github.com/michalzaq12/electron-nuxt/blob/master/README.md",
   "engines": {
     "node": ">=14.14.9"
@@ -115,6 +114,7 @@
     "electron": "^16.0.5",
     "electron-builder": "23.0.3",
     "electron-devtools-installer": "^3.2.0",
+    "electron-notarize": "^1.2.1",
     "nuxt": "^2.15.8",
     "webpack": "^4.46.0",
     "webpack-node-externals": "^3.0.0"
