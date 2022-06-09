@@ -37,14 +37,14 @@ const macOS = {
         y: 150,
         type: 'file'
       }
-    ]
+    ],
   }
 }
 
 module.exports = {
   productName: 'raw-project',
   appId: 'com.example.app',
-  artifactName: 'setup-${version}.${ext}',
+  artifactName: 'Synth-${version}.${ext}',
   directories: {
     output: 'build'
   },

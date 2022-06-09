@@ -1,5 +1,6 @@
 {
   "name": "raw-project",
+  "productName":"synth",
   "version": "0.0.1",
   "description": "An electron-nuxt project",
   "main": "./dist/main/index.js",
