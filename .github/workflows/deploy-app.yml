@@ -25,20 +25,19 @@ jobs:
         cache: 'yarn'
     - run: sudo rm -rf node_modules && yarn install --immutable --immutable-cache --check-cache
     - name: Build/release Electron app
-      uses: michalzaq12/action-electron-nuxt@v1.5.0
+      uses: samuelmeuli/action-electron-builder@v1.6.0
       with:
         mac_certs: ${{ secrets.MAC_CERTS }}
         mac_certs_password: ${{ secrets.MAC_CERTS_PASSWORD }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
-        release: true
-    # - name: check content
-    #   run: |
-    #       ls
-    #       cd build
-    #       ls
+        release: false
+    - name: check content
+      run: |
+          cd build
+          ls
     - uses: actions/upload-artifact@v3
       with:
         name: synth-mac-setup
-        path: /build
+        path: /build/TestProject-0.0.2.dmg

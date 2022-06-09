@@ -8,7 +8,8 @@
     "build": "node .electron-nuxt/build.js",
     "preinstall": "node .electron-nuxt/check-engines.js",
     "postinstall": "electron-builder install-app-deps",
-    "pack": "electron-builder -m"
+    "pack": "electron-builder -m",
+    "publish": "electron-builder -m --publish always"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,9 @@
       "entitlements": "assets/entitlements.mac.plist",
       "entitlementsInherit": "assets/entitlements.mac.plist",
       "gatekeeperAssess": false,
+      "publish": [
+        "github"
+      ],
       "target": [
         {
           "target": "dmg",
