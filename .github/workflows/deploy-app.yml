@@ -41,4 +41,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: synth-mac-setup
-        path: /build/TestProject-0.0.1.dmg
+        path: /build/TestProject-0.0.2.dmg
