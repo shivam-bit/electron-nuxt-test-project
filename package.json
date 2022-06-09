@@ -8,7 +8,7 @@
     "build": "node .electron-nuxt/build.js",
     "preinstall": "node .electron-nuxt/check-engines.js",
     "postinstall": "electron-builder install-app-deps",
-    "pack": "electron-builder -m",
+    "pack": "electron-builder -m"
   },
   "repository": {
     "type": "git",
