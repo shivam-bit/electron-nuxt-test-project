@@ -37,7 +37,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
-        release: false
+        release: true
     - uses: actions/upload-artifact@v3
       with:
         name: synth-mac-setup
