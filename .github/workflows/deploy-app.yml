@@ -11,22 +11,17 @@ env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 jobs:
   build:
-
     runs-on: macos-latest
     env:
       EP_GH_IGNORE_TIME: true
       APPLE_ID: ${{ secrets.APPLE_ID }}
       APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: "14.19.3"
         cache: 'yarn'
     - run: sudo rm -rf node_modules && yarn install --immutable --immutable-cache --check-cache
     - name: Build/release Electron app
@@ -38,8 +33,12 @@ jobs:
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
         release: true
+    - name: check content
+      run: |
+          ls
+          cd build
+          ls
     - uses: actions/upload-artifact@v3
       with:
         name: synth-mac-setup
-        path: ./build/TestProject-0.0.1.dmg
-      
+        path: /build/TestProject-0.0.1.dmg
