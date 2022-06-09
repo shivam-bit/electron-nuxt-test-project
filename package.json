@@ -9,7 +9,6 @@
     "preinstall": "node .electron-nuxt/check-engines.js",
     "postinstall": "electron-builder install-app-deps",
     "pack": "electron-builder -m",
-    "publish": "GH_TOKEN=$GITHUB_TOKEN electron-builder -m --publish always"
   },
   "repository": {
     "type": "git",
