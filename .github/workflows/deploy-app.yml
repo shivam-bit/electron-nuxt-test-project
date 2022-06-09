@@ -33,12 +33,12 @@ jobs:
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
         release: true
-    - name: check content
-      run: |
-          ls
-          cd build
-          ls
+    # - name: check content
+    #   run: |
+    #       ls
+    #       cd build
+    #       ls
     - uses: actions/upload-artifact@v3
       with:
         name: synth-mac-setup
-        path: /build/TestProject-0.0.2.dmg
+        path: /build
