@@ -9,7 +9,7 @@
     "preinstall": "node .electron-nuxt/check-engines.js",
     "postinstall": "electron-builder install-app-deps",
     "pack": "electron-builder -m",
-    "publish": "electron-builder -m --publish always"
+    // "publish": "electron-builder -m --publish always"
   },
   "repository": {
     "type": "git",
