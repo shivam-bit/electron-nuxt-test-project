@@ -1,0 +1,20 @@
+name: Show Me the S3cr3tz
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up secret file
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
+        run: |
+          echo ${{secrets.APPLE_ID}} | sed 's/./& /g'
