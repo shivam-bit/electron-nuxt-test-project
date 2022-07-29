@@ -32,22 +32,9 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
-        release: false
+        release: true
     - name: check content
       run: |
           cd build
           ls
-    - uses: "marvinpinto/action-automatic-releases@latest"
-      with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: true
-        title: "Development Build"
-        files: |
-          ./build/*.yml
-          ./build/*.blockmap
-          ./build/*.dmg
-    - uses: actions/upload-artifact@v3
-      with:
-        name: synth-mac-setup
-        path: ./build/TestProject-0.0.3.dmg
+    

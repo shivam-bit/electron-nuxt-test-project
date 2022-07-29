@@ -1,4 +1,5 @@
 import { app } from 'electron'
+console.log("🚀 ~ file:  ~ app", app.getVersion())
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -6,6 +7,7 @@ app.on('window-all-closed', function () {
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') app.quit()
 })
+
 
 // Load here all startup windows
 require('./mainWindow')
