@@ -41,7 +41,11 @@
       "entitlementsInherit": "assets/entitlements.mac.plist",
       "gatekeeperAssess": false,
       "publish": [
-        "github"
+        "github",
+        {
+          "provider": "generic",
+          "url": "https://synth-release-server.vercel.app"
+        }
       ],
       "target": [
         {
@@ -89,12 +93,17 @@
         "filter": "static/**"
       }
     ],
-    "publish": {
+    "publish": [{
       "provider": "github",
       "releaseType": "release",
       "owner": "shivam-bit",
       "repo": "electron-nuxt-test-project"
-    }
+    },
+      {
+        "provider": "generic",
+        "url": "https://synth-release-server.vercel.app"
+      }
+    ]
   },
   "keywords": [],
   "author": "shivam-bit <shivama5tronot@gmail.com>",
