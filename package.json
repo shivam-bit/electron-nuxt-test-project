@@ -1,6 +1,6 @@
 {
   "name": "test-project",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An electron-nuxt project",
   "main": "./dist/main/index.js",
   "scripts": {
