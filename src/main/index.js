@@ -8,6 +8,20 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 
+autoUpdater.on('error',(event)=>{
+  const dialogOpts = {
+    type: 'info',
+    buttons: ['Ok'],
+    title: error,
+  };
+
+  dialog.showMessageBox(dialogOpts, (response) => {
+    // if (response === 0) { 
+    //   autoUpdater.quitAndInstall();
+    // }
+  });
+})
+
 autoUpdater.on('checking-for-update',(event)=>{
   const dialogOpts = {
     type: 'info',
