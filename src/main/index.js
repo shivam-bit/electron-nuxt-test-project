@@ -1,5 +1,5 @@
 import { app } from 'electron'
-console.log("🚀 ~ file:  ~ app", app.getVersion())
+const { autoUpdater } = require('electron-updater');
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -8,6 +8,7 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 
+autoUpdater.checkForUpdatesAndNotify();
 
 // Load here all startup windows
 require('./mainWindow')

@@ -121,5 +121,8 @@
     "nuxt": "^2.15.8",
     "webpack": "^4.46.0",
     "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "electron-updater": "^5.0.5"
   }
 }
