@@ -8,11 +8,12 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 
-autoUpdater.on('error',(event)=>{
+autoUpdater.on('error',(message)=>{
   const dialogOpts = {
     type: 'info',
     buttons: ['Ok'],
-    title: error,
+    title: message,
+    detail: message
   };
 
   dialog.showMessageBox(dialogOpts, (response) => {
@@ -27,6 +28,7 @@ autoUpdater.on('checking-for-update',(event)=>{
     type: 'info',
     buttons: ['Ok'],
     title: 'Application Checking for Update',
+    detail:'Application Checking for Update',
   };
 
   dialog.showMessageBox(dialogOpts, (response) => {
@@ -41,6 +43,7 @@ autoUpdater.on('update-available',(event)=>{
     type: 'info',
     buttons: ['Ok'],
     title: 'Application Update Available',
+    detail:'Application Update Available',
   };
 
   dialog.showMessageBox(dialogOpts, (response) => {
@@ -55,6 +58,7 @@ autoUpdater.on('update-not-available',(event)=>{
     type: 'info',
     buttons: ['Ok'],
     title: 'Application Update not Available!',
+    detail:'Application Update not Available',
   };
 
   dialog.showMessageBox(dialogOpts, (response) => {
