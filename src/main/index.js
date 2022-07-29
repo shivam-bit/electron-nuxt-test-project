@@ -80,7 +80,8 @@ autoUpdater.on('update-downloaded', (info) => {
   });
 });
 
-autoUpdater.checkForUpdatesAndNotify();
-
+app.on("ready", function() {
+  autoUpdater.checkForUpdatesAndNotify();
+ });
 // Load here all startup windows
 require('./mainWindow')
