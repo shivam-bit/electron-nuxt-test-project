@@ -52,11 +52,20 @@
           {{ platform }}
         </div>
       </div>
+      <div class="item">
+        <div class="name">
+          App Version:
+        </div>
+        <div class="value">
+          {{ version }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { version } from "../../../package.json"; 
 export default {
   data () {
     return {
@@ -64,6 +73,7 @@ export default {
       electron: process.versions.electron,
       node: process.versions.node,
       platform: require('os').platform(),
+      version: version,
       vue: require('vue/package.json').version,
       nuxt: require('nuxt/package.json').version
     }
