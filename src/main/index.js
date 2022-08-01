@@ -1,5 +1,6 @@
 import { dialog,app } from 'electron'
 const { autoUpdater } = require('electron-updater');
+const logger = require('electron-log');
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -8,84 +9,44 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 
-autoUpdater.on('error',(message)=>{
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['Ok'],
-    title: message,
-    detail: message
-  };
-
-  dialog.showMessageBox(dialogOpts, (response) => {
-    // if (response === 0) { 
-    //   autoUpdater.quitAndInstall();
-    // }
-  });
-})
-
-autoUpdater.on('checking-for-update',(event)=>{
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['Ok'],
-    title: 'Application Checking for Update',
-    detail:'Application Checking for Update',
-  };
-
-  dialog.showMessageBox(dialogOpts, (response) => {
-    // if (response === 0) { 
-    //   autoUpdater.quitAndInstall();
-    // }
-  });
-})
-
-autoUpdater.on('update-available',(event)=>{
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['Ok'],
-    title: 'Application Update Available',
-    detail:'Application Update Available',
-  };
-
-  dialog.showMessageBox(dialogOpts, (response) => {
-    // if (response === 0) { 
-    //   autoUpdater.quitAndInstall();
-    // }
-  });
-})
-
-autoUpdater.on('update-not-available',(event)=>{
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['Ok'],
-    title: 'Application Update not Available!',
-    detail:'Application Update not Available',
-  };
-
-  dialog.showMessageBox(dialogOpts, (response) => {
-    // if (response === 0) { 
-    //   autoUpdater.quitAndInstall();
-    // }
-  });
-})
-
-
-autoUpdater.on('update-downloaded', (info) => {
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['Restart', 'Update'],
-    title: 'Application Update',
-    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-  };
-
-  dialog.showMessageBox(dialogOpts, (response) => {
-    if (response === 0) { 
-      autoUpdater.quitAndInstall();
-    }
-  });
-});
-
 app.on("ready", function() {
+  autoUpdater.logger = logger;
+  autoUpdater.setFeedURL({
+    provider: 'github',
+    repo: 'electron-nuxt-test-project',
+    owner: 'shivam-bit',
+    private: false,
+})
+  autoUpdater.logger.transports.file.level = 'info';
   autoUpdater.checkForUpdatesAndNotify();
+  logger.info('checkForUpdatesAndNotify');
+
+  autoUpdater.on('update-downloaded', (info) => {
+    const quitAndInstalled = autoUpdater.quitAndInstall();
+    logger.info('quitAndInstalled');
+    logger.info(quitAndInstalled);
+  });
+
+  autoUpdater.on('update-available', (arg) => {
+    logger.info('update-available');
+    logger.info(arg);
+  });
+
+  autoUpdater.on('update-not-available', (arg) => {
+    logger.info('update-not-available');
+    logger.info(arg);
+  });
+
+  autoUpdater.on('download-progress', (arg) => {
+    logger.info('download-progress');
+    logger.info(arg);
+  });
+
+  autoUpdater.on('error', (error) => {
+    logger.info('error');
+    logger.info(error.message);
+    logger.info(error.stack);
+  });
  });
 // Load here all startup windows
 require('./mainWindow')

@@ -1,6 +1,6 @@
 {
   "name": "test-project",
-  "version": "0.0.7",
+  "version": "0.0.6",
   "description": "An electron-nuxt project",
   "main": "./dist/main/index.js",
   "scripts": {
@@ -93,12 +93,13 @@
         "filter": "static/**"
       }
     ],
-    "publish": [{
-      "provider": "github",
-      "releaseType": "release",
-      "owner": "shivam-bit",
-      "repo": "electron-nuxt-test-project"
-    },
+    "publish": [
+      {
+        "provider": "github",
+        "releaseType": "release",
+        "owner": "shivam-bit",
+        "repo": "electron-nuxt-test-project"
+      },
       {
         "provider": "generic",
         "url": "https://synth-release-server.vercel.app"
@@ -132,6 +133,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "electron-log": "^4.4.8",
     "electron-updater": "^5.0.5"
   }
 }
