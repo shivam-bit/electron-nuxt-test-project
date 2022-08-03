@@ -42,8 +42,9 @@ jobs:
       env:
         GITHUB_REPOSITORY: Synth-PoC/Synth-electron
       with:
-        draft: true,
-        prerelease: false,
+        tag_name: ""
+        draft: true
+        prerelease: false
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: 'Synth-PoC/Synth-electron'
         files: |
