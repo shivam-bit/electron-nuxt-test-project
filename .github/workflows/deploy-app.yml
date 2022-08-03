@@ -45,7 +45,7 @@ jobs:
         tag_name: ""
         draft: true
         prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
         repository: 'Synth-PoC/Synth-electron'
         files: |
           ./build/*.yml
