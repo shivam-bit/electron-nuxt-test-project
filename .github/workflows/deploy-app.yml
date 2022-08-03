@@ -42,7 +42,7 @@ jobs:
       env:
         GITHUB_REPOSITORY: Synth-PoC/Synth-electron
       with:
-        tag_name: ""
+        tag_name: "v1"
         draft: true
         prerelease: false
         token: ${{ secrets.GH_TOKEN }}
