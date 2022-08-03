@@ -51,11 +51,11 @@ jobs:
     #       ./build/*.yml
     #       ./build/*.blockmap
     #       ./build/*.dmg
-    - name: Release
+    - name: Release on Public Repo
       uses: ncipollo/release-action@v1
       with:
         tag: "latest"
-        artifacts: "./build/*.yml,./build/*.blockmap, ./build/*.dmg"
+        artifacts: "./build/^latest.*$, ./build/^TestProject.*$"
         token: ${{ secrets.GH_TOKEN }}
         owner: "Synth-PoC"
         repo: "synth-release-server"
