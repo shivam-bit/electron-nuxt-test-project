@@ -37,4 +37,17 @@ jobs:
       run: |
           cd build
           ls
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_REPOSITORY: Synth-PoC/Synth-electron
+      with:
+        draft: true,
+        prerelease: false,
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: 'Synth-PoC/Synth-electron'
+        files: |
+          ./build/*.yml
+          ./build/*.blockmap
+          ./build/*.dmg
     

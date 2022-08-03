@@ -17,9 +17,15 @@ app.on("ready", function() {
     owner: 'shivam-bit',
     private: false,
 })
+
   autoUpdater.logger.transports.file.level = 'info';
-  autoUpdater.checkForUpdatesAndNotify();
+  autoUpdater.checkForUpdates();
   logger.info('checkForUpdatesAndNotify');
+
+  autoUpdater.on('checking-for-update', (info) => {
+    logger.info('checking-for-update');
+    logger.info(info);
+  });
 
   autoUpdater.on('update-downloaded', (info) => {
     const quitAndInstalled = autoUpdater.quitAndInstall();
